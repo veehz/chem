@@ -5,7 +5,7 @@
   "main": "cookies.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm docs && node preprocess.js",
+    "build": "rm -r docs && node preprocess.js",
     "dev": "concurrently --kill-others \"cd docs && live-server\" \"when-changed -r src node preprocess.js\""
   },
   "repository": {
