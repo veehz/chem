@@ -1,3 +1,5 @@
+"use strict";
+
 let current_equations = equations;
 
 if (getCookie("ordering")) {
