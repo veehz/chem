@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="manifest" href="/chem/manifest.json" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
+        integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X" crossorigin="anonymous">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js"
+        integrity="sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz"
+        crossorigin="anonymous"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/mhchem.min.js"
+        integrity="sha384-RTN08a0AXIioPBcVosEqPUfKK+rPp+h1x/izR7xMkdMyuwkcZCWdxO+RSwIFtJXN"
+        crossorigin="anonymous"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/copy-tex.min.js"
+        integrity="sha384-ww/583aHhxWkz5DEVn6OKtNiIaLi2iBRNZXfJRiY1Ai7tnJ9UXpEsyvOITVpTl4A"
+        crossorigin="anonymous"></script>
+    
+    <style>
+        body {
+            font-family: 'Hiragino Kaku Gothic Pro', 'WenQuanYi Zen Hei', '微軟正黑體', '蘋果儷中黑', Helvetica, Arial, sans-serif;
+        }
+    
+        main {
+            min-height: calc(100vh - 4rem);
+            text-align: center;
+        }
+    </style>
+
+    <!-- Google -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESQYE2ECNB"></script>
+    <script>
+        if (!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-ESQYE2ECNB', { 'site_speed_sample_rate': 100 });
+        }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2430460021266488"
+        crossorigin="anonymous"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>有机化学 化学反应练习</title>
+</head>
+
+<body>
+    <main>
+        <div>
+            <button id="settings-button">Settings</button><br>
+            <h1><span id="from">有机化学</span> → <span id="to">学化机有</span></h1>
+        </div>
+        <div id="solution">
+            <p id="msg">Click.</p>
+            <p id="equation"></p>
+        </div>
+
+        <!-- hidden settings page overlay whole screen -->
+        <div id="settings" hidden
+            style="overflow: auto; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 1); z-index: 1; padding: 8px;">
+            <button id="close-settings">Close</button>
+            <h2>Settings</h2>
+
+            <p>排列 (Ordered/Random): <button id="ordering">Random</button></p>
+
+            <p>Inclusion (And/Or): <button id="inclusion">And</button></p>
+
+            <fieldset id="family-fieldset">
+                <legend>家族:</legend>
+            </fieldset>
+        </div>
+    </main>
+</body>
+
+<script src="../cookies.js"></script>
+<script defer src="./equations.js"></script>
+<script defer src="./toggled-equations.js"></script>
+<script defer src="./index.js"></script>
+
+</html>

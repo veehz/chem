@@ -1,0 +1,25 @@
+{
+  "name": "orgchem_chemeq",
+  "version": "1.0.0",
+  "description": "Organic Chemistry Equations Exercise",
+  "main": "cookies.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm docs && node preprocess.js",
+    "dev": "concurrently --kill-others \"cd docs && live-server\" \"when-changed -r src node preprocess.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veehz/orgchem_eq_exercise.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veehz/orgchem_eq_exercise/issues"
+  },
+  "homepage": "https://github.com/veehz/orgchem_eq_exercise#readme",
+  "dependencies": {
+    "preprocess": "^3.2.0"
+  }
+}
