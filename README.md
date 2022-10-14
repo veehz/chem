@@ -13,3 +13,10 @@ Delete the `/docs` folder and run `node preprocess.js` to build the site.
 ## Preview
 
 To preview the site, run `npx live-server` in `/docs` and open `localhost:8080` in your browser.
+
+## Development Environment (on my machine)
+
+Install the packages with `npm install`.
+Install `when-changed` [here.](https://github.com/joh/when-changed)
+
+Run `npm run dev`.
