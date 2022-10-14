@@ -30,7 +30,14 @@ function processFile(file) {
     source = source.replace(/@include \$lib\//g, `@include ${relativePath}/`);
   }
 
-  const processed = pp.preprocess(source, process.env, {
+  const processed = pp.preprocess(source, {
+    fullLinkBtn: (href, text) => {
+      if (href.startsWith("http")) {
+        return `<a href="${href}" target="_blank"><button class="full-linked-button">${text}</button></a><br/>`;
+      }
+      return `<a href="${href}"><button class="full-linked-button">${text}</button></a><br/>`;
+    }
+  }, {
     srcDir,
   });
 
