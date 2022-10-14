@@ -50,6 +50,7 @@ function processDir(dir) {
         if (fs.statSync(path).isDirectory()) {
             processDir(path);
         } else {
+            console.log(path);
             processFile(path);
         }
     }

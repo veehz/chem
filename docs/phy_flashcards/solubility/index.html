@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <link rel="manifest" href="/chem/manifest.json" />
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
+        integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X" crossorigin="anonymous">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js"
+        integrity="sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz"
+        crossorigin="anonymous"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/mhchem.min.js"
+        integrity="sha384-RTN08a0AXIioPBcVosEqPUfKK+rPp+h1x/izR7xMkdMyuwkcZCWdxO+RSwIFtJXN"
+        crossorigin="anonymous"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/copy-tex.min.js"
+        integrity="sha384-ww/583aHhxWkz5DEVn6OKtNiIaLi2iBRNZXfJRiY1Ai7tnJ9UXpEsyvOITVpTl4A"
+        crossorigin="anonymous"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+    
+        main {
+            min-height: calc(100vh - 4rem);
+            text-align: center;
+        }
+    
+        .pretty-button {
+            border-radius: 0.5rem;
+            border: none;
+            padding: 0.25rem;
+            background-color: #f0f0f0;
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+    
+        .full-width {
+            width: 65ch;
+            max-width: 100%;
+        }
+    
+        .full-linked-button {
+            width: 65ch;
+            max-width: 100%;
+            border-radius: 0.5rem;
+            border: none;
+            padding: 0.25rem;
+            background-color: #f0f0f0;
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+            cursor: pointer;
+        }
+    </style>
+    
+    <!-- Google -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESQYE2ECNB"></script>
+    <script>
+        if (!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-ESQYE2ECNB', { 'site_speed_sample_rate': 100 });
+        }
+    </script>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>物理化学</title>
+</head>
+
+<body>
+
+    <main>
+        <h1>物理化学 溶解度</h1>
+        <style>
+            table {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+        <style type="text/css">
+          .tg  {border-collapse:collapse;border-spacing:0;}
+          .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+            overflow:hidden;padding:10px 5px;word-break:normal;}
+          .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+            font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+          .tg .tg-6y40{background-color:#FCE8B2;text-align:center;vertical-align:bottom}
+          .tg .tg-30gi{background-color:#B7E1CD;text-align:center;vertical-align:bottom}
+          .tg .tg-ibt7{background-color:#CCC;text-align:center;vertical-align:bottom}
+          .tg .tg-8d8j{text-align:center;vertical-align:bottom}
+          .tg .tg-n96m{background-color:#F4C7C3;text-align:center;vertical-align:bottom}
+          </style>
+          <table class="tg">
+          <thead>
+            <tr>
+              <th class="tg-8d8j"></th>
+              <th class="tg-8d8j">\(\ce{NO3^-}\)</th>
+              <th class="tg-8d8j">\(\ce{Cl-}\)</th>
+              <th class="tg-8d8j">\(\ce{SO4^{2-}}\)</th>
+              <th class="tg-8d8j">\(\ce{OH-}\)</th>
+              <th class="tg-8d8j">\(\ce{CO3^{2-}}\)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-8d8j">\(\ce{H+}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶、挥</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶、挥</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-8d8j"></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶、挥</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{NH^{4+}}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶、挥</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{K+}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{Na+}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{Ba^{2+}}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{Ca^{2+}}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-6y40"><span style="background-color:#FCE8B2">微</span></td>
+              <td class="tg-6y40"><span style="background-color:#FCE8B2">微</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{Mg^{2+}}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+              <td class="tg-6y40"><span style="background-color:#FCE8B2">微</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{Al^{3+}}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+              <td class="tg-ibt7"><span style="background-color:#CCC">-</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{Mn^{2+}}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{Zn^{2+}}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{Fe^{2+}}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{Fe^{3+}}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+              <td class="tg-ibt7"><span style="background-color:#CCC">-</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{Cu^{2+}}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+            </tr>
+            <tr>
+              <td class="tg-8d8j">\(\ce{Ag+}\)</td>
+              <td class="tg-30gi"><span style="background-color:#B7E1CD">溶</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+              <td class="tg-6y40"><span style="background-color:#FCE8B2">微</span></td>
+              <td class="tg-ibt7"><span style="background-color:#CCC">-</span></td>
+              <td class="tg-n96m"><span style="background-color:#F4C7C3">难</span></td>
+            </tr>
+          </tbody>
+          </table>
+        </div>
+    </main>
+
+</body>
+
+</html>
