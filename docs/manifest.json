@@ -2,7 +2,7 @@
   "name": "化学复习app",
   "short_name": "化学复习app",
   "start_url": "/chem",
-  "display": "standalone",
+  "display": "minimal-ui",
   "background_color": "#fff",
   "description": "化学复习app",
   "icons": [
