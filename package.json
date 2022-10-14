@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/veehz/orgchem_eq_exercise#readme",
   "dependencies": {
+    "concurrently": "^7.4.0",
     "live-server": "^1.2.2",
     "preprocess": "^3.2.0"
   }

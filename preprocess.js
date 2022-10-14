@@ -19,6 +19,9 @@ function processFile(file) {
     if (exclude.includes(file)) {
         return;
     }
+    if(file.includes("__includes")){
+        return;
+    }
     const source = fs.readFileSync(file, 'utf8');
     let srcDir = file.substring(0, file.lastIndexOf('/'));
     const processed = pp.preprocess(source, process.env, {
