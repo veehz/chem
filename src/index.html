@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- @include $lib/header.html -->
-    <title>化学练习</title>
+    <title>化学复习</title>
 </head>
+
 <body>
     <main>
-        <h1>请选择：</h1>
+        <h1>化学复习</h1>
         <!-- @exec fullLinkBtn("physical", "物理化学") -->
+        <!-- @exec fullLinkBtn("inorganic", "无机化学") -->
         <!-- @exec fullLinkBtn("organic", "有机化学") -->
+
+        <style>
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                padding-bottom: 1rem;
+                font-size: small;
+            }
+        </style>
+        <footer>
+            Last updated on <!-- @exec time() -->
+        </footer>
     </main>
 </body>
+
 </html>

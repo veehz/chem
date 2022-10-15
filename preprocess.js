@@ -36,6 +36,16 @@ function processFile(file) {
         return `<a href="${href}" target="_blank"><button class="full-linked-button">${text}</button></a><br/>`;
       }
       return `<a href="${href}"><button class="full-linked-button">${text}</button></a><br/>`;
+    },
+    time: () => {
+      // HH:MM DD/MM/YYYY
+      let date = new Date();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      return `${hours}:${minutes} ${day}/${month}/${year}`;
     }
   }, {
     srcDir,
