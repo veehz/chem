@@ -10,10 +10,12 @@ let exclude = ["/header.html"];
 const path = require("path");
 exclude = exclude.map((e) => path.join(SOURCE, e));
 
+const katex = require("katex");
+require("katex/contrib/mhchem");
+
 // recursively process all files in SOURCE and output to DESTINATION
 
 const fs = require("fs");
-
 function processFile(file) {
   if (exclude.includes(file)) {
     return;
@@ -30,26 +32,50 @@ function processFile(file) {
     source = source.replace(/@include \$lib\//g, `@include ${relativePath}/`);
   }
 
-  const processed = pp.preprocess(source, {
-    fullLinkBtn: (href, text) => {
-      if (href.startsWith("http")) {
-        return `<a href="${href}" target="_blank"><button class="full-linked-button">${text}</button></a><br/>`;
-      }
-      return `<a href="${href}"><button class="full-linked-button">${text}</button></a><br/>`;
+  let processed = pp.preprocess(
+    source,
+    {
+      fullLinkBtn: (href, text) => {
+        if (href.startsWith("http")) {
+          return `<a href="${href}" target="_blank"><button class="full-linked-button">${text}</button></a><br/>`;
+        }
+        return `<a href="${href}"><button class="full-linked-button">${text}</button></a><br/>`;
+      },
+      time: () => {
+        // HH:MM DD/MM/YYYY
+        let date = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        return `${hours}:${minutes} ${day}/${month}/${year}`;
+      },
     },
-    time: () => {
-      // HH:MM DD/MM/YYYY
-      let date = new Date();
-      let hours = date.getHours();
-      let minutes = date.getMinutes();
-      let day = date.getDate();
-      let month = date.getMonth() + 1;
-      let year = date.getFullYear();
-      return `${hours}:${minutes} ${day}/${month}/${year}`;
+    {
+      srcDir,
     }
-  }, {
-    srcDir,
-  });
+  );
+
+  if (processed.includes("<!-- @prerender_katex -->")) {
+    // remove "<!-- @prerender_katex -->"
+    processed = processed.replace("<!-- @prerender_katex -->", "");
+    // regex search for /\\\((.*)\\\)/gm and replace with katex
+    processed = processed.replace(/\\\((.*)\\\)/gm, (match, p1) => {
+      const replace = {
+        "&gt;" : ">",
+      }
+      for(let key in replace) {
+        p1 = p1.replace(key, replace[key]);
+      }
+      try {
+        return katex.renderToString(p1);
+      } catch (e) {
+        console.log(e);
+        return match;
+      }
+    });
+  }
 
   const dest = file.replace(SOURCE, DEST);
   // if exists and same output, don't write
@@ -68,7 +94,7 @@ function processFile(file) {
 }
 
 function processDir(dir) {
-  if(path.normalize(dir) == path.normalize(SOURCE + "/__lib"))  return;
+  if (path.normalize(dir) == path.normalize(SOURCE + "/__lib")) return;
   const files = fs.readdirSync(dir);
   for (const file of files) {
     const path = dir + "/" + file;
