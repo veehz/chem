@@ -63,9 +63,9 @@ function processFile(file) {
     // regex search for /\\\((.*)\\\)/gm and replace with katex
     processed = processed.replace(/\\\((.*)\\\)/gm, (match, p1) => {
       const replace = {
-        "&gt;" : ">",
-      }
-      for(let key in replace) {
+        "&gt;": ">",
+      };
+      for (let key in replace) {
         p1 = p1.replace(key, replace[key]);
       }
       try {
@@ -107,3 +107,10 @@ function processDir(dir) {
 }
 
 processDir(SOURCE);
+
+// copy favicons to docs/
+const favicons = fs.readdirSync("favicons");
+for (const file of favicons) {
+  const from = "favicons/" + file;
+  fs.copyFileSync(from, path.join(DEST, file));
+}
