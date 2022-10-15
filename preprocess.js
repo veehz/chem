@@ -26,7 +26,7 @@ function processFile(file) {
 
   // replace "@include $lib/" with relative path
   if (source.includes("@include $lib/")) {
-    let relativePath = path.relative(srcDir, path.join(SOURCE, "lib"));
+    let relativePath = path.relative(srcDir, path.join(SOURCE, "__lib"));
     source = source.replace(/@include \$lib\//g, `@include ${relativePath}/`);
   }
 
@@ -58,7 +58,7 @@ function processFile(file) {
 }
 
 function processDir(dir) {
-  if(path.normalize(dir) == path.normalize(SOURCE + "/lib"))  return;
+  if(path.normalize(dir) == path.normalize(SOURCE + "/__lib"))  return;
   const files = fs.readdirSync(dir);
   for (const file of files) {
     const path = dir + "/" + file;
