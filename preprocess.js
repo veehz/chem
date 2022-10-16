@@ -28,11 +28,17 @@ async function processFile(file) {
   let source = fs.readFileSync(file, "utf8");
   let srcDir = file.substring(0, file.lastIndexOf("/"));
 
-  // replace "@include $lib/" with relative path
-  if (source.includes("@include $lib/")) {
+  // include from __lib
+  source = source.replace(/<!--\s*\@include\s*\$lib\/([^\s]*)\s*-->/gm, (match, p1) => {
     let relativePath = path.relative(srcDir, path.join(SOURCE, "__lib"));
-    source = source.replace(/@include \$lib\//g, `@include ${relativePath}/`);
-  }
+    return `<!-- @include ${relativePath}/${p1} -->`;
+  });
+
+  // include js files (using @includejs)
+  source = source.replace(/<!--\s*\@includejs\s*([^\s]*)\s*-->/gm, (match, p1) => {
+    return `<script><!-- @include ${p1} --></script>`;
+  });
+
 
   let processed = pp.preprocess(
     source,
