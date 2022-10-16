@@ -39,6 +39,7 @@
         margin-bottom: 0.25rem;
         cursor: pointer;
     }
+
 </style>
 
 <!-- Google Analytics -->
@@ -55,6 +56,22 @@
 <!-- Quicklink -->
 <script defer src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js"></script>
 <script defer src="data:text/javascript,quicklink.listen()"></script>
+
+<script>
+    window.addEventListener("load", function () {
+        const backButton = document.createElement("div");
+        backButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="m12 20-8-8 8-8 1.425 1.4-5.6 5.6H20v2H7.825l5.6 5.6Z"/></svg>`;
+        backButton.style.position = "fixed";
+        backButton.style.top = ".25rem";
+        backButton.style.left = ".25rem";
+        backButton.style.cursor = "pointer";
+        backButton.id = "backbutton";
+        backButton.addEventListener("click", function () {
+            window.location.href = (window.location.href.split("/").slice(0, -2).join("/") + "/");
+        });
+        document.body.appendChild(backButton);
+    });
+</script>
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">

@@ -12,9 +12,9 @@
 <body>
     <main>
         <h1>化学复习</h1>
-        <!-- @exec fullLinkBtn("physical", "物理化学") -->
-        <!-- @exec fullLinkBtn("inorganic", "无机化学") -->
-        <!-- @exec fullLinkBtn("organic", "有机化学") -->
+        <!-- @exec fullLinkBtn("inorganic", "高一：无机化学") -->
+        <!-- @exec fullLinkBtn("physical", "高二：物理化学") -->
+        <!-- @exec fullLinkBtn("organic", "高三：有机化学") -->
 
         <style>
             footer {
@@ -24,11 +24,19 @@
                 padding-bottom: 1rem;
                 font-size: small;
             }
+
         </style>
         <footer>
-            Last updated on <!-- @exec time() -->
+            Last updated on
+            <!-- @exec time() -->
         </footer>
     </main>
 </body>
+
+<script>
+    window.addEventListener('load', function () {
+        document.getElementById("backbutton").style.display = "none";
+    })
+</script>
 
 </html>

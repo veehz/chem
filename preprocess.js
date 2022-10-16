@@ -63,15 +63,29 @@ async function processFile(file) {
     // remove "<!-- @prerender_katex -->"
     processed = processed.replace("<!-- @prerender_katex -->", "");
     // regex search for /\\\((.*)\\\)/gm and replace with katex
+    const replace = {
+      "&gt;": ">",
+    };
     processed = processed.replace(/\\\((.*)\\\)/gm, (match, p1) => {
-      const replace = {
-        "&gt;": ">",
-      };
       for (let key in replace) {
         p1 = p1.replace(key, replace[key]);
       }
       try {
         return katex.renderToString(p1);
+      } catch (e) {
+        console.log(e);
+        return match;
+      }
+    });
+    // display math
+    processed = processed.replace(/\\\[(.*)\\\]/gm, (match, p1) => {
+      for (let key in replace) {
+        p1 = p1.replace(key, replace[key]);
+      }
+      try {
+        return katex.renderToString(p1, {
+          displayMode: true,
+        });
       } catch (e) {
         console.log(e);
         return match;
