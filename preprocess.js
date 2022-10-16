@@ -2,7 +2,12 @@
 
 const pp = require("preprocess");
 
-const minify = process.argv.includes("--minify");
+const options = {
+  minify: process.argv.includes("--minify"),
+  development: process.argv.includes("--development"),
+}
+
+options.production = !options.development;
 
 const SOURCE = "src";
 const DEST = "docs";
@@ -67,6 +72,8 @@ async function processFile(file) {
           month < 10 ? "0" + month : month
         }/${year}`;
       },
+      PRODUCTION: options.production,
+      DEVELOPMENT: options.development,
     },
     {
       srcDir,
@@ -109,7 +116,7 @@ async function processFile(file) {
 
   const dest = file.replace(SOURCE, DEST);
 
-  if (minify && dest.endsWith(".html")) {
+  if (options.minify && dest.endsWith(".html")) {
     const { minify } = require("html-minifier-terser");
     processed = await minify(processed, {
       collapseWhitespace: true,
