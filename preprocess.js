@@ -41,7 +41,8 @@ async function processFile(file) {
         if (href.startsWith("http")) {
           return `<a href="${href}" target="_blank"><button class="full-linked-button">${text}</button></a><br/>`;
         }
-        return `<a href="${href}"><button class="full-linked-button">${text}</button></a><br/>`;
+        const needTrailingSlash = !href.endsWith("/") && !href.split("/").pop().includes(".");
+        return `<a href="${href}${needTrailingSlash ? "/" : ""}"><button class="full-linked-button">${text}</button></a><br/>`;
       },
       time: () => {
         // HH:MM DD/MM/YYYY
