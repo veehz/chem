@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rm -r docs & node preprocess.js --minify",
     "dev": "concurrently --kill-others \"cd docs && live-server\" \"when-changed -r src node preprocess.js\"",
-    "preview": "cd docs && live-server"
+    "preview": "cd docs && live-server",
+    "deploy": "npm run build && node gh-pages.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/veehz/orgchem_eq_exercise#readme",
   "dependencies": {
     "concurrently": "^7.4.0",
+    "gh-pages": "^4.0.0",
     "html-minifier-terser": "^7.0.0",
     "katex": "^0.16.2",
     "live-server": "^1.2.2",
