@@ -2,10 +2,12 @@
 
 const pp = require("preprocess");
 
+const minify = process.argv.includes("--minify");
+
 const SOURCE = "src";
 const DEST = "docs";
 
-let exclude = ["/header.html"];
+let exclude = [];
 
 const path = require("path");
 exclude = exclude.map((e) => path.join(SOURCE, e));
@@ -16,7 +18,7 @@ require("katex/contrib/mhchem");
 // recursively process all files in SOURCE and output to DESTINATION
 
 const fs = require("fs");
-function processFile(file) {
+async function processFile(file) {
   if (exclude.includes(file)) {
     return;
   }
@@ -78,6 +80,20 @@ function processFile(file) {
   }
 
   const dest = file.replace(SOURCE, DEST);
+
+  if (minify && dest.endsWith(".html")) {
+      const { minify } = require("html-minifier-terser");
+      processed = await minify(processed, {
+        collapseWhitespace: true,
+        preserveLineBreaks: true,
+        removeComments: true,
+        minifyCSS: true,
+        minifyJS: true,
+        removeAttributeQuotes: true,
+      });
+      console.log("Minified " + dest);
+  }
+
   // if exists and same output, don't write
   if (fs.existsSync(dest)) {
     const destContent = fs.readFileSync(dest, "utf8");
@@ -94,7 +110,7 @@ function processFile(file) {
 }
 
 function processDir(dir) {
-  if (path.normalize(dir) == path.normalize(SOURCE + "/__lib")) return;
+  if (path.normalize(dir) === path.normalize(SOURCE + "/__lib")) return;
   const files = fs.readdirSync(dir);
   for (const file of files) {
     const path = dir + "/" + file;
@@ -106,11 +122,27 @@ function processDir(dir) {
   }
 }
 
-processDir(SOURCE);
+fs.mkdir(DEST, { recursive: true }, async (err) => {
+  if (err) throw err;
+  await processDir(SOURCE);
+  copyFavicons();
+});
 
 // copy favicons to docs/
-const favicons = fs.readdirSync("favicons");
-for (const file of favicons) {
-  const from = "favicons/" + file;
-  fs.copyFileSync(from, path.join(DEST, file));
+function copyFavicons() {
+  const favicons = fs.readdirSync("favicons");
+  for (const file of favicons) {
+    const from = "favicons/" + file;
+
+    // if files are equal, ignore
+    if (fs.existsSync(from) && fs.existsSync(DEST + "/" + file)) {
+      const fromContent = fs.readFileSync(from, "utf8");
+      const toContent = fs.readFileSync(DEST + "/" + file, "utf8");
+      if (fromContent === toContent) {
+        continue;
+      }
+    }
+
+    fs.copyFileSync(from, path.join(DEST, file));
+  }
 }

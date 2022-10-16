@@ -1,234 +1,118 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
-
+<html lang=zh-Hans>
 <head>
-    <link rel="manifest" href="/chem/manifest.json" />
-    
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-        body {
-            font-family: 'Hiragino Kaku Gothic Pro', 'WenQuanYi Zen Hei', '微軟正黑體', '蘋果儷中黑', Helvetica, Arial, sans-serif;
-        }
-    
-        main {
-            min-height: calc(100vh - 4rem);
-            text-align: center;
-        }
-    
-        .pretty-button {
-            border-radius: 0.5rem;
-            border: none;
-            padding: 0.25rem;
-            background-color: #f0f0f0;
-            margin-top: 0.25rem;
-            margin-bottom: 0.25rem;
-        }
-    
-        .full-width {
-            width: 65ch;
-            max-width: 100%;
-        }
-    
-        .full-linked-button {
-            width: 65ch;
-            max-width: 100%;
-            border-radius: 0.5rem;
-            border: none;
-            padding: 0.25rem;
-            background-color: #f0f0f0;
-            margin-top: 0.25rem;
-            margin-bottom: 0.25rem;
-            cursor: pointer;
-        }
-    </style>
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESQYE2ECNB"></script>
-    <script>
-        if (!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-ESQYE2ECNB', { 'site_speed_sample_rate': 100 });
-        }
-    </script>
-    
-    <!-- Quicklink -->
-    <script defer src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js"></script>
-    <script defer src="data:text/javascript,quicklink.listen()"></script>
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
-        integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X" crossorigin="anonymous">
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js"
-        integrity="sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz"
-        crossorigin="anonymous"></script>
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/mhchem.min.js"
-        integrity="sha384-RTN08a0AXIioPBcVosEqPUfKK+rPp+h1x/izR7xMkdMyuwkcZCWdxO+RSwIFtJXN"
-        crossorigin="anonymous"></script>
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js"
-        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/copy-tex.min.js"
-        integrity="sha384-ww/583aHhxWkz5DEVn6OKtNiIaLi2iBRNZXfJRiY1Ai7tnJ9UXpEsyvOITVpTl4A"
-        crossorigin="anonymous"></script>
-    <title>物理化学 酸碱盐的主要化学性质</title>
+<link rel=manifest href=/chem/manifest.json>
+<meta charset=UTF-8>
+<meta http-equiv=X-UA-Compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>body{font-family:'Hiragino Kaku Gothic Pro','WenQuanYi Zen Hei','微軟正黑體','蘋果儷中黑',Helvetica,Arial,sans-serif}main{min-height:calc(100vh - 4rem);text-align:center}.pretty-button{border-radius:.5rem;border:none;padding:.25rem;background-color:#f0f0f0;margin-top:.25rem;margin-bottom:.25rem}.full-width{width:65ch;max-width:100%}.full-linked-button{width:65ch;max-width:100%;border-radius:.5rem;border:none;padding:.25rem;background-color:#f0f0f0;margin-top:.25rem;margin-bottom:.25rem;cursor:pointer}</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ESQYE2ECNB"></script>
+<script>if("1"!==window.doNotTrack&&"1"!==navigator.doNotTrack&&"yes"!==navigator.doNotTrack&&"1"!==navigator.msDoNotTrack){function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-ESQYE2ECNB",{site_speed_sample_rate:100})}</script>
+<script defer=defer src=https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js></script>
+<script defer=defer src=data:text/javascript,quicklink.listen()></script>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
+<meta name=msapplication-TileColor content=#da532c>
+<meta name=theme-color content=#ffffff>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css integrity=sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X crossorigin=anonymous>
+<script defer=defer src=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js integrity=sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz crossorigin=anonymous></script>
+<script defer=defer src=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/mhchem.min.js integrity=sha384-RTN08a0AXIioPBcVosEqPUfKK+rPp+h1x/izR7xMkdMyuwkcZCWdxO+RSwIFtJXN crossorigin=anonymous></script>
+<script defer=defer src=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<script src=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/copy-tex.min.js integrity=sha384-ww/583aHhxWkz5DEVn6OKtNiIaLi2iBRNZXfJRiY1Ai7tnJ9UXpEsyvOITVpTl4A crossorigin=anonymous></script>
+<title>物理化学 酸碱盐的主要化学性质</title>
 </head>
-
 <body>
-    <main>
-        <h1>物理化学 酸碱盐的主要化学性质</h1>
-        <style>
-            table {
-                margin-left: auto;
-                margin-right: auto;
-            }
-        </style>
-        <style type="text/css">
-            .tg {
-                border-collapse: collapse;
-                border-spacing: 0;
-            }
-        
-            .tg td {
-                border-color: black;
-                border-style: solid;
-                border-width: 1px;
-                font-family: Arial, sans-serif;
-                font-size: 14px;
-                overflow: hidden;
-                padding: 10px 5px;
-                word-break: normal;
-            }
-        
-            .tg th {
-                border-color: black;
-                border-style: solid;
-                border-width: 1px;
-                font-family: Arial, sans-serif;
-                font-size: 14px;
-                font-weight: normal;
-                overflow: hidden;
-                padding: 10px 5px;
-                word-break: normal;
-            }
-        
-            .tg .tg-j6zm {
-                font-weight: bold;
-                text-align: left;
-                vertical-align: bottom
-            }
-        
-            .tg .tg-7zrl {
-                text-align: left;
-                vertical-align: bottom
-            }
-        
-            .tg .tg-kcps {
-                background-color: #FFF;
-                text-align: left;
-                vertical-align: bottom
-            }
-        </style>
-        <table class="tg">
-            <thead>
-                <tr>
-                    <th class="tg-j6zm" colspan="3"><span style="font-weight:bold">(1) 酸的主要化学性质</span></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="tg-j6zm"><span style="font-weight:bold">反应物</span></td>
-                    <td class="tg-j6zm"><span style="font-weight:bold">方程式</span></td>
-                    <td class="tg-j6zm"><span style="font-weight:bold">类型</span></td>
-                </tr>
-                <tr>
-                    <td class="tg-7zrl">活泼金属</td>
-                    <td class="tg-7zrl">\(\ce{HCl + Fe -&gt;} \allowbreak \ce{ FeCl2 + H2 ^ }\)</td>
-                    <td class="tg-7zrl">置换反应</td>
-                </tr>
-                <tr>
-                    <td class="tg-7zrl">碱性氧化物</td>
-                    <td class="tg-7zrl">\(\ce{HCl + CaO -&gt;} \allowbreak \ce{ CaCl2 + H2O}\)</td>
-                    <td class="tg-7zrl">复分解反应</td>
-                </tr>
-                <tr>
-                    <td class="tg-7zrl">碱</td>
-                    <td class="tg-7zrl">\(\ce{H2SO4 + 2 NaOH -&gt;} \allowbreak \ce{ Na2SO4 + 2 H2O}\)</td>
-                    <td class="tg-7zrl">复分解反应</td>
-                </tr>
-                <tr>
-                    <td class="tg-7zrl">某些盐</td>
-                    <td class="tg-7zrl">\(\ce{2HCl + CaCO3 -&gt;} \allowbreak \ce{ CaCl2 + H2O + CO2 ^}\)</td>
-                    <td class="tg-7zrl">复分解反应</td>
-                </tr>
-                <tr>
-                    <td class="tg-j6zm" colspan="3"><span style="font-weight:bold">(2) 碱的主要化学性质</span></td>
-                </tr>
-                <tr>
-                    <td class="tg-j6zm"><span style="font-weight:bold">反应物</span></td>
-                    <td class="tg-j6zm"><span style="font-weight:bold">方程式</span></td>
-                    <td class="tg-j6zm"><span style="font-weight:bold">类型</span></td>
-                </tr>
-                <tr>
-                    <td class="tg-7zrl">酸性氧化物</td>
-                    <td class="tg-7zrl">\(\ce{NaOH + CO2 -&gt;} \allowbreak \ce{ Na2CO3 + H2O}\)</td>
-                    <td class="tg-7zrl">-</td>
-                </tr>
-                <tr>
-                    <td class="tg-7zrl">酸</td>
-                    <td class="tg-7zrl">\(\ce{KOH + HCl -&gt;} \allowbreak \ce{ KCl + H2O}\)</td>
-                    <td class="tg-7zrl">复分解反应</td>
-                </tr>
-                <tr>
-                    <td class="tg-7zrl">某些盐</td>
-                    <td class="tg-7zrl">\(\ce{Ca(OH)2 + Na2CO3 -&gt;} \allowbreak \ce{ CaCO3 v + 2NaOH}\)</td>
-                    <td class="tg-7zrl">复分解反应</td>
-                </tr>
-                <tr>
-                    <td class="tg-j6zm" colspan="3"><span style="font-weight:bold">(2) 盐的主要化学性质</span></td>
-                </tr>
-                <tr>
-                    <td class="tg-j6zm"><span style="font-weight:bold">反应物</span></td>
-                    <td class="tg-j6zm"><span style="font-weight:bold">方程式</span></td>
-                    <td class="tg-j6zm"><span style="font-weight:bold">类型</span></td>
-                </tr>
-                <tr>
-                    <td class="tg-7zrl">金属</td>
-                    <td class="tg-7zrl">\(\ce{CuSO4 + Fe -&gt;} \allowbreak \ce{ FeSO4 + Cu}\)</td>
-                    <td class="tg-7zrl">置换反应</td>
-                </tr>
-                <tr>
-                    <td class="tg-7zrl">酸</td>
-                    <td class="tg-7zrl">\(\ce{CaCO3 + 2HCl -&gt;} \allowbreak \ce{ CaCl2 + H2O + CO2 ^}\)</td>
-                    <td class="tg-7zrl">复分解反应</td>
-                </tr>
-                <tr>
-                    <td class="tg-7zrl">碱</td>
-                    <td class="tg-kcps"><span style="background-color:#FFF">\(\ce{Na2CO3 + Ca(OH)2 -&gt;} \allowbreak \ce{ CaCO3
-                            v + 2 NaOH}\)</span></td>
-                    <td class="tg-7zrl">复分解反应</td>
-                </tr>
-                <tr>
-                    <td class="tg-7zrl">盐</td>
-                    <td class="tg-7zrl">\(\ce{Na2CO3 + CaCl2 -&gt;} \allowbreak \ce{ CaCO3 v + 2NaCl}\)</td>
-                    <td class="tg-7zrl">复分解反应</td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
+<main>
+<h1>物理化学 酸碱盐的主要化学性质</h1>
+<style>table{margin-left:auto;margin-right:auto}</style>
+<style type=text/css>.tg{border-collapse:collapse;border-spacing:0}.tg td{border-color:#000;border-style:solid;border-width:1px;font-family:Arial,sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal}.tg th{border-color:#000;border-style:solid;border-width:1px;font-family:Arial,sans-serif;font-size:14px;font-weight:400;overflow:hidden;padding:10px 5px;word-break:normal}.tg .tg-j6zm{font-weight:700;text-align:left;vertical-align:bottom}.tg .tg-7zrl{text-align:left;vertical-align:bottom}.tg .tg-kcps{background-color:#fff;text-align:left;vertical-align:bottom}</style>
+<table class=tg>
+<thead>
+<tr>
+<th class=tg-j6zm colspan=3><span style=font-weight:700>(1) 酸的主要化学性质</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class=tg-j6zm><span style=font-weight:700>反应物</span></td>
+<td class=tg-j6zm><span style=font-weight:700>方程式</span></td>
+<td class=tg-j6zm><span style=font-weight:700>类型</span></td>
+</tr>
+<tr>
+<td class=tg-7zrl>活泼金属</td>
+<td class=tg-7zrl>\(\ce{HCl + Fe -&gt;} \allowbreak \ce{ FeCl2 + H2 ^ }\)</td>
+<td class=tg-7zrl>置换反应</td>
+</tr>
+<tr>
+<td class=tg-7zrl>碱性氧化物</td>
+<td class=tg-7zrl>\(\ce{HCl + CaO -&gt;} \allowbreak \ce{ CaCl2 + H2O}\)</td>
+<td class=tg-7zrl>复分解反应</td>
+</tr>
+<tr>
+<td class=tg-7zrl>碱</td>
+<td class=tg-7zrl>\(\ce{H2SO4 + 2 NaOH -&gt;} \allowbreak \ce{ Na2SO4 + 2 H2O}\)</td>
+<td class=tg-7zrl>复分解反应</td>
+</tr>
+<tr>
+<td class=tg-7zrl>某些盐</td>
+<td class=tg-7zrl>\(\ce{2HCl + CaCO3 -&gt;} \allowbreak \ce{ CaCl2 + H2O + CO2 ^}\)</td>
+<td class=tg-7zrl>复分解反应</td>
+</tr>
+<tr>
+<td class=tg-j6zm colspan=3><span style=font-weight:700>(2) 碱的主要化学性质</span></td>
+</tr>
+<tr>
+<td class=tg-j6zm><span style=font-weight:700>反应物</span></td>
+<td class=tg-j6zm><span style=font-weight:700>方程式</span></td>
+<td class=tg-j6zm><span style=font-weight:700>类型</span></td>
+</tr>
+<tr>
+<td class=tg-7zrl>酸性氧化物</td>
+<td class=tg-7zrl>\(\ce{NaOH + CO2 -&gt;} \allowbreak \ce{ Na2CO3 + H2O}\)</td>
+<td class=tg-7zrl>-</td>
+</tr>
+<tr>
+<td class=tg-7zrl>酸</td>
+<td class=tg-7zrl>\(\ce{KOH + HCl -&gt;} \allowbreak \ce{ KCl + H2O}\)</td>
+<td class=tg-7zrl>复分解反应</td>
+</tr>
+<tr>
+<td class=tg-7zrl>某些盐</td>
+<td class=tg-7zrl>\(\ce{Ca(OH)2 + Na2CO3 -&gt;} \allowbreak \ce{ CaCO3 v + 2NaOH}\)</td>
+<td class=tg-7zrl>复分解反应</td>
+</tr>
+<tr>
+<td class=tg-j6zm colspan=3><span style=font-weight:700>(2) 盐的主要化学性质</span></td>
+</tr>
+<tr>
+<td class=tg-j6zm><span style=font-weight:700>反应物</span></td>
+<td class=tg-j6zm><span style=font-weight:700>方程式</span></td>
+<td class=tg-j6zm><span style=font-weight:700>类型</span></td>
+</tr>
+<tr>
+<td class=tg-7zrl>金属</td>
+<td class=tg-7zrl>\(\ce{CuSO4 + Fe -&gt;} \allowbreak \ce{ FeSO4 + Cu}\)</td>
+<td class=tg-7zrl>置换反应</td>
+</tr>
+<tr>
+<td class=tg-7zrl>酸</td>
+<td class=tg-7zrl>\(\ce{CaCO3 + 2HCl -&gt;} \allowbreak \ce{ CaCl2 + H2O + CO2 ^}\)</td>
+<td class=tg-7zrl>复分解反应</td>
+</tr>
+<tr>
+<td class=tg-7zrl>碱</td>
+<td class=tg-kcps><span style=background-color:#fff>\(\ce{Na2CO3 + Ca(OH)2 -&gt;} \allowbreak \ce{ CaCO3 v + 2 NaOH}\)</span></td>
+<td class=tg-7zrl>复分解反应</td>
+</tr>
+<tr>
+<td class=tg-7zrl>盐</td>
+<td class=tg-7zrl>\(\ce{Na2CO3 + CaCl2 -&gt;} \allowbreak \ce{ CaCO3 v + 2NaCl}\)</td>
+<td class=tg-7zrl>复分解反应</td>
+</tr>
+</tbody>
+</table>
+</main>
 </body>
-
 </html>
