@@ -14,6 +14,10 @@ Delete the `/docs` folder and run `node preprocess.js` to build the site.
 
 To preview the site, run `npx live-server` in `/docs` and open `localhost:8080` in your browser.
 
+## Deploy
+
+To deploy the site, run `npm run deploy`, which runs `npm run build && node gh-pages.js`.
+
 ## Development Environment (on my machine)
 
 Install the packages with `npm install`.
