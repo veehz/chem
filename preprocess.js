@@ -41,8 +41,11 @@ async function processFile(file) {
         if (href.startsWith("http")) {
           return `<a href="${href}" target="_blank"><button class="full-linked-button">${text}</button></a><br/>`;
         }
-        const needTrailingSlash = !href.endsWith("/") && !href.split("/").pop().includes(".");
-        return `<a href="${href}${needTrailingSlash ? "/" : ""}"><button class="full-linked-button">${text}</button></a><br/>`;
+        const needTrailingSlash =
+          !href.endsWith("/") && !href.split("/").pop().includes(".");
+        return `<a href="${href}${
+          needTrailingSlash ? "/" : ""
+        }"><button class="full-linked-button">${text}</button></a><br/>`;
       },
       time: () => {
         // HH:MM DD/MM/YYYY
@@ -52,7 +55,11 @@ async function processFile(file) {
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
-        return `${hours}:${minutes} ${day}/${month}/${year}`;
+        return `${hours < 10 ? "0" + hours : hours}:${
+          minutes < 10 ? "0" + minutes : minutes
+        } ${day < 10 ? "0" + day : day}/${
+          month < 10 ? "0" + month : month
+        }/${year}`;
       },
     },
     {
@@ -97,16 +104,16 @@ async function processFile(file) {
   const dest = file.replace(SOURCE, DEST);
 
   if (minify && dest.endsWith(".html")) {
-      const { minify } = require("html-minifier-terser");
-      processed = await minify(processed, {
-        collapseWhitespace: true,
-        preserveLineBreaks: true,
-        removeComments: true,
-        minifyCSS: true,
-        minifyJS: true,
-        removeAttributeQuotes: true,
-      });
-      console.log("Minified " + dest);
+    const { minify } = require("html-minifier-terser");
+    processed = await minify(processed, {
+      collapseWhitespace: true,
+      preserveLineBreaks: true,
+      removeComments: true,
+      minifyCSS: true,
+      minifyJS: true,
+      removeAttributeQuotes: true,
+    });
+    console.log("Minified " + dest);
   }
 
   // if exists and same output, don't write
