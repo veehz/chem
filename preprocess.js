@@ -33,17 +33,23 @@ async function processFile(file) {
   let source = fs.readFileSync(file, "utf8");
   let srcDir = file.substring(0, file.lastIndexOf("/"));
 
+  // include js files (using @includejs)
+  source = source.replace(/<!--\s*\@includejs\s*(.*)\s*-->/gm, (match, p1) => {
+    const jsFiles = p1.split(" ").filter((f) => f.trim() != "").map((f) => `<!-- @include ${f.trim()} -->`);
+    return `<script>${jsFiles.join("\n")}</script>`;
+  });
+
+  // include css files (using @includecss)
+  source = source.replace(/<!--\s*\@includecss\s*(.*)\s*-->/gm, (match, p1) => {
+    const cssFiles = p1.split(" ").filter((f) => f.trim() != "").map((f) => `<!-- @include ${f.trim()} -->`);
+    return `<style>${cssFiles.join("\n")}</style>`;
+  });
+
   // include from __lib
   source = source.replace(/<!--\s*\@include\s*\$lib\/([^\s]*)\s*-->/gm, (match, p1) => {
     let relativePath = path.relative(srcDir, path.join(SOURCE, "__lib"));
     return `<!-- @include ${relativePath}/${p1} -->`;
   });
-
-  // include js files (using @includejs)
-  source = source.replace(/<!--\s*\@includejs\s*([^\s]*)\s*-->/gm, (match, p1) => {
-    return `<script><!-- @include ${p1} --></script>`;
-  });
-
 
   let processed = pp.preprocess(
     source,

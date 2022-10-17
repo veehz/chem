@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <!-- @include $lib/header.html -->
+    <!-- @include $lib/katex.html -->
+    <title>有机化学 鉴别</title>
+</head>
+
+<body>
+    <main>
+        <div>
+            <button id="settings-button">Settings</button><br>
+            <h1><span id="from">有机化学</span> → <span id="to">鉴别</span></h1>
+        </div>
+        <div id="solution">
+            <p id="msg">Click.</p><br>
+            <p id="reagent"></p><br>
+            <p id="observation"></p><br>
+            <p id="equation"></p>
+        </div>
+
+        <!-- hidden settings page overlay whole screen -->
+        <div id="settings" hidden
+            style="overflow: auto; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 1); z-index: 1; padding: 8px;">
+            <button id="close-settings">Close</button>
+            <h2>Settings</h2>
+
+            <p>排列 (Ordered/Random): <button id="ordering">Random</button></p>
+
+            <p>Inclusion (And/Or): <button id="inclusion">And</button></p>
+
+            <fieldset id="family-fieldset">
+                <legend>家族:</legend>
+            </fieldset>
+        </div>
+    </main>
+</body>
+
+<!-- @include $lib/cookies.html -->
+<script defer src="./equations.js"></script>
+<script defer src="./toggled-equations.js"></script>
+<script defer src="./index.js"></script>
+
+</html>
