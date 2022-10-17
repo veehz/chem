@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang=zh-Hans>
 <head>
-<meta charset=UTF-8>
-<meta http-equiv=X-UA-Compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
 <link rel=manifest href=/chem/manifest.json>
 <meta charset=UTF-8>
 <meta http-equiv=X-UA-Compatible content="IE=edge">
@@ -20,20 +17,38 @@
 <link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
 <meta name=msapplication-TileColor content=#da532c>
 <meta name=theme-color content=#ffffff>
-<title>化学复习</title>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css integrity=sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X crossorigin=anonymous>
+<script defer=defer src=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js integrity=sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz crossorigin=anonymous></script>
+<script defer=defer src=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/mhchem.min.js integrity=sha384-RTN08a0AXIioPBcVosEqPUfKK+rPp+h1x/izR7xMkdMyuwkcZCWdxO+RSwIFtJXN crossorigin=anonymous></script>
+<script defer=defer src=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<script src=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/copy-tex.min.js integrity=sha384-ww/583aHhxWkz5DEVn6OKtNiIaLi2iBRNZXfJRiY1Ai7tnJ9UXpEsyvOITVpTl4A crossorigin=anonymous></script>
+<title>有机化学 鉴别</title>
 </head>
 <body>
 <main>
-<h1>化学复习</h1>
-<a href=inorganic/ ><button class=full-linked-button>高一：无机化学</button></a><br>
-<a href=physical/ ><button class=full-linked-button>高二：物理化学</button></a><br>
-<a href=organic/ ><button class=full-linked-button>高三：有机化学</button></a><br>
-<style>footer{position:fixed;bottom:0;width:100%;padding-bottom:1rem;font-size:small}</style>
-<footer>
-Last updated on 13:08 17/10/2022.<br>
-Code available on <a href=https://github.com/veehz/chem target=_blank>GitHub</a>.
-</footer>
+<div>
+<button id=settings-button>Settings</button><br>
+<h1><span id=from>有机化学</span> → <span id=to>鉴别</span></h1>
+</div>
+<div id=solution>
+<p id=msg>Click.</p><br>
+<p id=reagent></p><br>
+<p id=observation></p><br>
+<p id=equation></p>
+</div>
+<div id=settings hidden style=overflow:auto;position:fixed;top:0;left:0;width:100%;height:100%;background-color:#fff;z-index:1;padding:8px>
+<button id=close-settings>Close</button>
+<h2>Settings</h2>
+<p>排列 (Ordered/Random): <button id=ordering>Random</button></p>
+<p>Inclusion (And/Or): <button id=inclusion>And</button></p>
+<fieldset id=family-fieldset>
+<legend>家族:</legend>
+</fieldset>
+</div>
 </main>
 </body>
-<script>window.addEventListener("DOMContentLoaded",(function(){document.getElementById("backbutton").style.display="none"}))</script>
+<script>"use strict";function getCookie(e){var o=("; "+document.cookie).split("; "+e+"=");if(2==o.length)return o.pop().split(";").shift()}function setCookie(e,o){document.cookie=e+"="+o}function deleteCookie(e){document.cookie=e+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"}</script>
+<script defer=defer src=./equations.js></script>
+<script defer=defer src=./toggled-equations.js></script>
+<script defer=defer src=./index.js></script>
 </html>
