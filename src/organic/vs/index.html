@@ -13,7 +13,29 @@
     <main>
         <h1>有机化学 和谁能反应？</h1>
         <div id="table" style="display: block;">
-            <!-- @include __includes/table.html -->
+            <div id="vs-table">
+                <!-- @include __includes/table.html -->
+            </div>
+            <script>
+                // id-ify the table
+                const table = document.getElementById("vs-table").children[1];
+                {
+                    const head = table.children[0].children[0];
+                    for (let i = 0; i < head.children.length; i++) {
+                        const child = head.children[i];
+                        child.id = "vstable-1-" + (i + 1);
+                    }
+                }
+                {
+                    const body = table.children[1];
+                    for (let i = 0; i < body.children.length; i++) {
+                        for (let j = 0; j < body.children[i].children.length; j++) {
+                            const child = body.children[i].children[j];
+                            child.id = "vstable-" + (i + 2) + "-" + (j + 1);
+                        }
+                    }
+                }
+            </script>
         </div>
         <div id="popup" hidden style="overflow: auto; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background-color: rgb(255, 255, 255); z-index: 1; padding: 8px; text-align: center;">
@@ -23,6 +45,7 @@
             <script>
                 document.getElementById("closePopup").addEventListener("click", () => {
                     document.getElementById("popup").hidden = true;
+                    window.location.href = "#";
                 });
             </script>
             <div id="popupContent">
@@ -30,6 +53,39 @@
             </div>
         </div>
     </main>
+
+    <!-- @includejs __includes/equations.js -->
+    <script>
+        window.addEventListener("load", function () {
+            for (const cell in equations) {
+                const eq = equations[cell];
+                if (!eq.html) {
+                    eq.html = `${eq.title ? `<h2>${eq.title}</h2>` : ""}<p>${eq.content}</p>`;
+                }
+                const el = document.getElementById("vstable-" + cell);
+                el.style.cursor = "pointer";
+                el.addEventListener("click", () => {
+                    window.location.href = "#cell-" + cell;
+                    document.getElementById("popupContent").innerHTML = eq.html;
+                    document.getElementById("popup").hidden = false;
+                });
+            }
+
+            const hash = window.location.hash;
+            if (hash.startsWith("#cell-")) {
+                const cell = hash.substring(6);
+                if (equations[cell]) {
+                    const el = document.getElementById("vstable-" + cell);
+                    el.click();
+                }
+            }
+        });
+        this.addEventListener("keydown", (event) => {
+            if(event.key == "Escape" && !document.getElementById("popup").hidden) {
+                document.getElementById("closePopup").click();
+            }
+        });
+    </script>
 </body>
 
 </html>
