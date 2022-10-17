@@ -56,6 +56,17 @@
 
     <!-- @includejs __includes/equations.js -->
     <script>
+        function refresh() {
+            console.log("refresh")
+            const hash = window.location.hash;
+            if (hash.startsWith("#cell-") && equations[hash.substring(6)]) {
+                const cell = hash.substring(6);
+                const el = document.getElementById("vstable-" + cell);
+                el.click();
+            } else {
+                document.getElementById("popup").hidden = true;
+            }
+        }
         window.addEventListener("load", function () {
             for (const cell in equations) {
                 const eq = equations[cell];
@@ -70,18 +81,15 @@
                     document.getElementById("popup").hidden = false;
                 });
             }
-
-            const hash = window.location.hash;
-            if (hash.startsWith("#cell-")) {
-                const cell = hash.substring(6);
-                if (equations[cell]) {
-                    const el = document.getElementById("vstable-" + cell);
-                    el.click();
-                }
-            }
+            refresh();
         });
+
+        window.onhashchange = () => {
+            refresh();
+        };
+
         this.addEventListener("keydown", (event) => {
-            if(event.key == "Escape" && !document.getElementById("popup").hidden) {
+            if (event.key == "Escape" && !document.getElementById("popup").hidden) {
                 document.getElementById("closePopup").click();
             }
         });
