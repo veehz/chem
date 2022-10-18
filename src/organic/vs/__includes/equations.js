@@ -43,6 +43,21 @@ const equations = {
             \(\ce{R-Cl + NaOH ->[\text{水}][\Delta] R-OH + NaCl}\)<br><br>
             \(\ce{NaCl + AgNO3 -> AgCl + NaNO3}\)`,
   },
+  "6-5":{
+    title: String.raw`醇 + \(\ce{PX5}\)`,
+    content: String.raw`
+    \(\ce{R\color{red}{OH} + P\color{blue}{X}_5 -> R\color{blue}{X} + H\color{blue}{X} + PO\color{blue}{X}_3}\)<br><br>
+      当 \(\ce{X = Cl}\) 时，产生 \(\ce{HCl}\)，观察<b style="border: solid 1px black; padding: 1px;">白雾</b>。因此这个反应可以检测羟基。
+      <br><br>
+      补充：对于 \(\ce{PCl3}\)<br><br>
+      \(\ce{3R\color{red}{OH} + P\color{blue}{X}_3 -> 3R\color{blue}{X} + H3PO3}\)<br><br>
+    `
+  },
+  "6-6":{
+    title: String.raw`醇 + \(\ce{Na}\)`,
+    content: String.raw`
+    \(\ce{2R\color{red}{OH} + 2\color{blue}{Na} -> 2RO\color{blue}{Na} + \color{red}{H_2}}\)`
+  },
   "6-11":{
     title: String.raw`卤仿反应 (2-醇)`,
     content: String.raw`
