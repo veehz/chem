@@ -5,7 +5,7 @@ const pp = require("preprocess");
 const options = {
   minify: process.argv.includes("--minify"),
   development: process.argv.includes("--development"),
-}
+};
 
 options.production = !options.development;
 
@@ -35,21 +35,30 @@ async function processFile(file) {
 
   // include js files (using @includejs)
   source = source.replace(/<!--\s*\@includejs\s*(.*)\s*-->/gm, (match, p1) => {
-    const jsFiles = p1.split(" ").filter((f) => f.trim() != "").map((f) => `<!-- @include ${f.trim()} -->`);
+    const jsFiles = p1
+      .split(" ")
+      .filter((f) => f.trim() != "")
+      .map((f) => `<!-- @include ${f.trim()} -->`);
     return `<script>${jsFiles.join("\n")}</script>`;
   });
 
   // include css files (using @includecss)
   source = source.replace(/<!--\s*\@includecss\s*(.*)\s*-->/gm, (match, p1) => {
-    const cssFiles = p1.split(" ").filter((f) => f.trim() != "").map((f) => `<!-- @include ${f.trim()} -->`);
+    const cssFiles = p1
+      .split(" ")
+      .filter((f) => f.trim() != "")
+      .map((f) => `<!-- @include ${f.trim()} -->`);
     return `<style>${cssFiles.join("\n")}</style>`;
   });
 
   // include from __lib
-  source = source.replace(/<!--\s*\@include\s*\$lib\/([^\s]*)\s*-->/gm, (match, p1) => {
-    let relativePath = path.relative(srcDir, path.join(SOURCE, "__lib"));
-    return `<!-- @include ${relativePath}/${p1} -->`;
-  });
+  source = source.replace(
+    /<!--\s*\@include\s*\$lib\/([^\s]*)\s*-->/gm,
+    (match, p1) => {
+      let relativePath = path.relative(srcDir, path.join(SOURCE, "__lib"));
+      return `<!-- @include ${relativePath}/${p1} -->`;
+    }
+  );
 
   let processed = pp.preprocess(
     source,
@@ -92,6 +101,7 @@ async function processFile(file) {
     // regex search for /\\\((.*)\\\)/gm and replace with katex
     const replace = {
       "&gt;": ">",
+      "->": String.raw`}\ \allowbreak \ce{->`,
     };
     processed = processed.replace(/\\\(([\s\S]*?)\\\)/gm, (match, p1) => {
       for (let key in replace) {
