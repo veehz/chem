@@ -93,7 +93,7 @@ async function processFile(file) {
     const replace = {
       "&gt;": ">",
     };
-    processed = processed.replace(/\\\((.*?)\\\)/gm, (match, p1) => {
+    processed = processed.replace(/\\\(([\s\S]*?)\\\)/gm, (match, p1) => {
       for (let key in replace) {
         p1 = p1.replace(key, replace[key]);
       }
@@ -105,7 +105,7 @@ async function processFile(file) {
       }
     });
     // display math
-    processed = processed.replace(/\\\[(.*?)\\\]/gm, (match, p1) => {
+    processed = processed.replace(/\\\[([\s\S]*?)\\\]/gm, (match, p1) => {
       for (let key in replace) {
         p1 = p1.replace(key, replace[key]);
       }
