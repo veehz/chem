@@ -43,6 +43,15 @@ const equations = {
             \(\ce{R-Cl + NaOH ->[\text{水}][\Delta] R-OH + NaCl}\)<br><br>
             \(\ce{NaCl + AgNO3 -> AgCl + NaNO3}\)`,
   },
+  "6-11":{
+    title: String.raw`卤仿反应 (2-醇)`,
+    content: String.raw`
+    一定要有 \(\ce{-CH(OH)CH3}\) 的结构<br><br>
+    只有乙醛：\(\ce{\color{red}{R}CH(OH)CH3 + 4X2 + 6NaOH -> $\underset{\text{羧酸钠}}{\ce{\color{red}{R}COONa}}$ + $\underset{\text{三卤甲烷}}{\ce{CHX3}}$ + 5NaX + 5H2O}\)
+    <br><br>
+    \(\ce{CHI3}\): 碘仿
+    `
+  },
   "8-9": {
     title: String.raw`醛 + 托伦试剂`,
     content: String.raw`
@@ -56,10 +65,21 @@ const equations = {
     `
   },
   "8-11":{
-    title: String.raw`卤仿反应`,
+    title: String.raw`卤仿反应 (乙醛)`,
     content: String.raw`
     一定要有 \(\ce{-C(=O)CH3}\) 的结构<br><br>
     只有乙醛：\(\ce{HCOCH3 + 4NaOH + 3X2 -> $\underset{\text{羧酸钠}}{\ce{HCOONa}}$ + $\underset{\text{三卤甲烷}}{\ce{CHX3}}$ + 3NaX + 3H2O}\)
+    <br><br>
+    \(\ce{CHI3}\): 碘仿
+    `
+  },
+  "9-11":{
+    title: String.raw`卤仿反应 (2-酮)`,
+    content: String.raw`
+    一定要有 \(\ce{-C(=O)CH3}\) 的结构<br><br>
+    只有2-酮：\(\ce{\color{red}{R}COCH3 + 4NaOH + 3X2 -> $\underset{\text{羧酸钠}}{\ce{\color{red}{R}COONa}}$ + $\underset{\text{三卤甲烷}}{\ce{CHX3}}$ + 3NaX + 3H2O}\)
+    <br><br>
+    \(\ce{CHI3}\): 碘仿
     `
   }
 };

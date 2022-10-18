@@ -68,6 +68,7 @@
             }
         }
         window.addEventListener("load", function () {
+            document.getElementById("vstable-1-1").innerHTML = `Click on <span style="color: red;">*</span> cells!`
             for (const cell in equations) {
                 const eq = equations[cell];
                 if (!eq.html) {
@@ -75,6 +76,7 @@
                 }
                 const el = document.getElementById("vstable-" + cell);
                 el.style.cursor = "pointer";
+                el.innerHTML = el.innerHTML.trim() + `<span style="color: red;">*</span>`;
                 el.addEventListener("click", () => {
                     window.location.href = "#cell-" + cell;
                     document.getElementById("popupContent").innerHTML = eq.html;
