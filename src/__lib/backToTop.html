@@ -1,0 +1,76 @@
+<!-- https://gist.github.com/veehz/57880f75aeec36bcdf9dfff115371d23 -->
+<style>
+    #back-to-top {
+        background: #ddd;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        bottom: 20px;
+        -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        color: red;
+        cursor: pointer;
+        display: block;
+        height: 40px;
+        opacity: 1;
+        outline: 0;
+        position: fixed;
+        right: 20px;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-transition: bottom 0.2s, opacity 0.2s;
+        -o-transition: bottom 0.2s, opacity 0.2s;
+        -moz-transition: bottom 0.2s, opacity 0.2s;
+        transition: bottom 0.2s, opacity 0.2s;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 40px;
+        z-index: 1;
+    }
+
+    #back-to-top svg {
+        display: block;
+        fill: currentColor;
+        height: 17px;
+        margin: 12px auto 0;
+        width: 17px;
+    }
+
+    #back-to-top.hidden {
+        bottom: -40px;
+        opacity: 0;
+    }
+
+</style>
+
+<div id="back-to-top" class="hidden">
+    <svg viewBox="0 0 24 24">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
+    </svg>
+</div>
+
+<script type="text/javascript">
+    var backToTop = document.getElementById("back-to-top");
+    var scrollTrigger = 100;
+    window.addEventListener("scroll", function () {
+        if (window.pageYOffset > scrollTrigger) {
+            backToTop.classList.remove("hidden");
+        } else {
+            backToTop.classList.add("hidden");
+        }
+    });
+    backToTop.addEventListener("click", function () {
+        // fast scroll to top if browser supports, else instant
+        if ("scrollBehavior" in document.documentElement.style) {
+            document.documentElement.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        } else {
+            document.documentElement.scrollTop = 0;
+        }
+    });
+</script>
