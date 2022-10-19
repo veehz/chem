@@ -67,17 +67,21 @@ const equations = {
     \(\ce{CHI3}\): 碘仿
     `
   },
+  "7-6":{
+    title: String.raw`酚 + \(\ce{Na}\)`,
+    content: String.raw`
+    和醇的反应一样。<br><br>
+    \(\ce{2R\color{red}{OH} + 2\color{blue}{Na} -> 2RO\color{blue}{Na} + \color{red}{H_2}}\)`
+  },
   "8-9": {
     title: String.raw`醛 + 托伦试剂`,
     content: String.raw`
-    \(\ce{\color{red}{R}CHO + 2Ag(NH3)2OH -> \color{red}{R}COONH4 + 2Ag + H2O + 3NH3}\)
-    `
+    \(\ce{\color{red}{R}CHO + 2Ag(NH3)2OH -> \color{red}{R}COONH4 + 2Ag + H2O + 3NH3}\)`
   },
   "8-10": {
     title: String.raw`醛 + 斐林试剂`,
     content: String.raw`
-    \(\ce{\color{red}{R}CHO + 2Cu^{2+} + NaOH + H2O ->[][\Delta] \color{red}{R}COONa + Cu2O + 4H+}\)
-    `
+    \(\ce{\color{red}{R}CHO + 2Cu^{2+} + NaOH + H2O ->[][\Delta] \color{red}{R}COONa + Cu2O + 4H+}\)`
   },
   "8-11":{
     title: String.raw`卤仿反应 (乙醛)`,
