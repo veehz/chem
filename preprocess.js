@@ -30,6 +30,22 @@ async function processFile(file) {
   if (file.includes("__includes")) {
     return;
   }
+
+  const processedTypes = [".html", ".js", ".css", ".svg"];
+  if(!processedTypes.includes(path.extname(file))) {
+    const dest = path.join(DEST, path.relative(SOURCE, file));
+    // if files are equal, ignore
+    if (fs.existsSync(file) && fs.existsSync(dest)) {
+      const srcBuff = fs.readFileSync(file);
+      const destBuff = fs.readFileSync(dest);
+      if (srcBuff.equals(destBuff)) {
+        return;
+      }
+    }
+    fs.copyFileSync(file, dest);
+    return;
+  }
+
   let source = fs.readFileSync(file, "utf8");
   let srcDir = file.substring(0, file.lastIndexOf("/"));
 
@@ -130,7 +146,7 @@ async function processFile(file) {
     });
   }
 
-  const dest = file.replace(SOURCE, DEST);
+  const dest = path.join(DEST, path.relative(SOURCE, file));
 
   if (options.minify && dest.endsWith(".html")) {
     const { minify } = require("html-minifier-terser");
