@@ -42,6 +42,7 @@ async function processFile(file) {
         return;
       }
     }
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.copyFileSync(file, dest);
     return;
   }
