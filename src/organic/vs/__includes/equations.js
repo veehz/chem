@@ -67,12 +67,6 @@ const equations = {
     \(\ce{CHI3}\): 碘仿
     `
   },
-  "7-6":{
-    title: String.raw`酚 + \(\ce{Na}\)`,
-    content: String.raw`
-    和醇的反应一样。<br><br>
-    \(\ce{2R\color{red}{OH} + 2\color{blue}{Na} -> 2RO\color{blue}{Na} + \color{red}{H_2}}\)`
-  },
   "8-9": {
     title: String.raw`醛 + 托伦试剂`,
     content: String.raw`
