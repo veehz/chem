@@ -1,6 +1,7 @@
 "use strict";
 
 const pp = require("preprocess");
+const path = require("path");
 
 const options = {
   minify: process.argv.includes("--minify"),
@@ -13,8 +14,13 @@ const SOURCE = "src";
 const DEST = "docs";
 
 let exclude = [];
+const page_specific_context = [["index.html", { noBackButton: true }]];
 
-const path = require("path");
+const page_specific_context_map = {};
+for (const [file, context] of page_specific_context) {
+  page_specific_context_map[path.normalize(file)] = context;
+}
+
 exclude = exclude.map((e) => path.join(SOURCE, e));
 
 const katex = require("katex");
@@ -32,7 +38,7 @@ async function processFile(file) {
   }
 
   const processedTypes = [".html", ".js", ".css", ".svg"];
-  if(!processedTypes.includes(path.extname(file))) {
+  if (!processedTypes.includes(path.extname(file))) {
     const dest = path.join(DEST, path.relative(SOURCE, file));
     // if files are equal, ignore
     if (fs.existsSync(file) && fs.existsSync(dest)) {
@@ -106,6 +112,7 @@ async function processFile(file) {
       },
       PRODUCTION: options.production,
       DEVELOPMENT: options.development,
+      ...page_specific_context_map[path.normalize(path.relative(SOURCE, file))],
     },
     {
       srcDir,
@@ -153,7 +160,6 @@ async function processFile(file) {
     const { minify } = require("html-minifier-terser");
     processed = await minify(processed, {
       collapseWhitespace: true,
-      preserveLineBreaks: true,
       removeComments: true,
       minifyCSS: true,
       minifyJS: true,

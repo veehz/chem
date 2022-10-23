@@ -1,4 +1,5 @@
-<!-- @if PRODUCTION --><link rel="manifest" href="/chem/manifest.json" /><!-- @endif -->
+<!-- @if PRODUCTION -->
+<link rel="manifest" href="/chem/manifest.json" /><!-- @endif -->
 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,7 @@
 <style>
     body {
         font-family: 'Hiragino Kaku Gothic Pro', 'WenQuanYi Zen Hei',
-        '微軟正黑體', '蘋果儷中黑', Helvetica, Arial, sans-serif;
+            '微軟正黑體', '蘋果儷中黑', Helvetica, Arial, sans-serif;
     }
 
     main {
@@ -40,6 +41,23 @@
         cursor: pointer;
         font-size: 1rem;
     }
+
+    footer {
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding-bottom: 1rem;
+        font-size: small;
+    }
+
+    .leftcontainer {
+        width: 65ch;
+        max-width: 100%;
+        margin: auto;
+        text-align: left;
+    }
+
 </style>
 
 <!-- @if PRODUCTION -->
@@ -59,14 +77,27 @@
 <script defer src="data:text/javascript,quicklink.listen()"></script>
 <!-- @endif -->
 
+<!-- @ifndef noBackButton -->
+<style>
+    #backbutton {
+        position: fixed;
+        top: .25em;
+        left: .25rem;
+        cursor: pointer;
+    }
+
+    @media print {
+        #backbutton {
+            display: none;
+        }
+    }
+
+</style>
+
 <script>
     window.addEventListener("DOMContentLoaded", function () {
         const backButton = document.createElement("div");
-        backButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="m12 20-8-8 8-8 1.425 1.4-5.6 5.6H20v2H7.825l5.6 5.6Z"/></svg>`;
-        backButton.style.position = "fixed";
-        backButton.style.top = ".25rem";
-        backButton.style.left = ".25rem";
-        backButton.style.cursor = "pointer";
+        backButton.innerHTML = `<!-- @include ./svg/arrow_back.svg -->`;
         backButton.id = "backbutton";
         backButton.addEventListener("click", function () {
             window.location.href = (window.location.href.split("/").slice(0, -2).join("/") + "/");
@@ -74,6 +105,11 @@
         document.body.appendChild(backButton);
     });
 </script>
+<!-- @endif -->
+
+<!-- @ifndef noBackToTop -->
+<!-- @include backToTop.html -->
+<!-- @endif -->
 
 <!-- @if PRODUCTION -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
