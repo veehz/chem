@@ -160,6 +160,7 @@ async function processFile(file) {
     const { minify } = require("html-minifier-terser");
     processed = await minify(processed, {
       collapseWhitespace: true,
+      preserveLineBreaks: true,
       removeComments: true,
       minifyCSS: true,
       minifyJS: true,
