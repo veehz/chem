@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,28 @@
     <!-- @include $lib/header.html -->
     <title>无机化学</title>
 </head>
+
 <body>
     <main>
         <h1>无机化学</h1>
-        <!-- @exec fullLinkBtn("ionProperties", "常考离子性质") -->
-        <!-- @exec fullLinkBtn("differentiate", "区别/除杂") -->
+        <section>
+            <h2 id="gas">气体</h2>
+            <!-- @exec fullLinkBtn("gasPhysicalProperties", "气体物理性质") -->
+        </section>
+
+        <section>
+            <h2 id="ions">离子</h2>
+            <!-- @exec fullLinkBtn("ionProperties", "常考离子性质") -->
+            <!-- @exec fullLinkBtn("cationTest", "阳离子检验") -->
+            <!-- @exec fullLinkBtn("anionTest", "阴离子检验") -->
+        </section>
+        <section>
+            <h2 id="misc">其他</h2>
+            <!-- @exec fullLinkBtn("differentiate", "区别/除杂") -->
+            <!-- @exec fullLinkBtn("preparation_lab", "实验室制取法") -->
+            <!-- @exec fullLinkBtn("preparation_commercial", "工业制取法") -->
+        </section>
     </main>
 </body>
+
 </html>
