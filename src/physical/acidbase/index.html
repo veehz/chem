@@ -3,16 +3,47 @@
 
 <head>
     <!-- @include $lib/header.html -->
-    <!-- @includecss $lib/styles/table.css -->
+    <!-- @includecss $lib/styles/table.css $lib/styles/toc.css -->
     <!-- @prerender_katex -->
     <!-- @include $lib/katex_css.html -->
-    <title>物理化学 酸碱盐的主要化学性质</title>
+    <title>物理化学 酸碱盐</title>
 </head>
 
 <body>
     <main>
-        <h1>物理化学 酸碱盐的主要化学性质</h1>
-        <!-- @include __includes/chemeq.html -->
+        <h1>物理化学 酸碱盐</h1>
+        <div id="toc">
+            <a href="#theory">理论</a><br>
+            <a href="#constants">各个常数</a><br>
+            <a href="#chemproperties">主要化学性质</a>
+        </div>
+        <section>
+            <h2 id="theory">理论</h2>
+            <!-- @include __includes/theory.html -->
+        </section>
+        <section>
+            <h2 id="constants">各个常数</h2>
+            <h3>电离度</h3>
+            \(\alpha = \frac{\text{已电离分子数}}{\text{分子总数}} \times 100\% \)
+            <h3>平衡常数</h3>
+            对于 \(\ce{aA + bB &lt;=&gt; cC + dD}\), <br>
+            \(K_\text{c} = \dfrac{[\text C]^c [\text D]^d}{[\text A]^a [\text B]^b}\)<br><br>
+            <h3>电离常数 / 电离平衡常数</h3>
+            \(K_\text{a}\) 弱酸 \(K_\text{b}\) 弱碱
+            \[K_\text{a} = \dfrac{[\text H^+][\text A^-]}{[\text{HA}]}, K_\text{b} = \dfrac{[\text A^+][\text
+            {OH}^-]}{[\text{AOH}]}\]
+            <h3>压强平衡常数</h3>
+            \[K_\text{p} = \dfrac{p_C^c \times p_D^d}{p_A^a \times p_B^b}\]
+            <h3>溶度积</h3>
+            对于 \(\ce{A_m B_n (s) &lt;=&gt; m A^{n+} + n B^{m-}}\)
+            \[K_\text{sp} = \ce{[A^{n+}]^m [B^{m-}]^n}\]
+            <h3>水的离子积常数</h3>
+            \[K_\text{w} = \ce{[H+][OH-]} = 1 \times 10^{-14}\]
+        </section>
+        <section>
+            <h2 id="chemproperties">主要化学性质</h2>
+            <!-- @include __includes/chemeq.html -->
+        </section>
     </main>
 </body>
 
