@@ -22,11 +22,13 @@
   "bugs": {
     "url": "https://github.com/veehz/chem/issues"
   },
-  "homepage": "https://github.com/veehz/chem#readme",
+  "subpage": "chem",
+  "homepage": "https://veehz.github.io/chem/",
   "dependencies": {
     "html-minifier-terser": "^7.0.0",
     "katex": "^0.16.2",
-    "preprocess": "^3.2.0"
+    "preprocess": "^3.2.0",
+    "sitemap": "^7.1.1"
   },
   "devDependencies": {
     "@compodoc/live-server": "^1.2.3",

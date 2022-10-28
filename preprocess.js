@@ -6,6 +6,7 @@ const path = require("path");
 const options = {
   minify: process.argv.includes("--minify"),
   development: process.argv.includes("--development"),
+  prefetch: process.argv.includes("--prefetch"),
 };
 
 options.production = !options.development;
@@ -26,6 +27,8 @@ exclude = exclude.map((e) => path.join(SOURCE, e));
 const katex = require("katex");
 require("katex/contrib/mhchem");
 
+const all_index_files = [];
+
 // recursively process all files in SOURCE and output to DESTINATION
 
 const fs = require("fs");
@@ -35,6 +38,11 @@ async function processFile(file) {
   }
   if (file.includes("__includes")) {
     return;
+  }
+  if (file.includes("index.html")) {
+    all_index_files.push(
+      path.relative(SOURCE, file.substring(0, file.lastIndexOf("/")))
+    );
   }
 
   const processedTypes = [".html", ".js", ".css", ".svg"];
@@ -90,9 +98,24 @@ async function processFile(file) {
         if (href.startsWith("http")) {
           return `<a href="${href}" target="_blank"><button class="full-linked-button">${text}</button></a><br/>`;
         }
+
+        const prefetch = [];
+        const realHrefDir = path.normalize(path.join(srcDir, href));
+        if (options.prefetch && fs.existsSync(path.join(realHrefDir, "img"))) {
+          const imgs = fs.readdirSync(path.join(realHrefDir, "img"));
+          for (const img of imgs) {
+            prefetch.push(
+              `<link rel="prefetch" href="${path.relative(
+                srcDir,
+                path.join(realHrefDir, "img", img)
+              )}">`
+            );
+          }
+        }
+
         const needTrailingSlash =
           !href.endsWith("/") && !href.split("/").pop().includes(".");
-        return `<a href="${href}${
+        return `${prefetch.join("")}<a href="${href}${
           needTrailingSlash ? "/" : ""
         }"><button class="full-linked-button">${text}</button></a><br/>`;
       },
@@ -118,7 +141,6 @@ async function processFile(file) {
       srcDir,
     }
   );
-
   if (processed.includes("<!-- @prerender_katex -->")) {
     // remove "<!-- @prerender_katex -->"
     processed = processed.replace("<!-- @prerender_katex -->", "");
@@ -155,6 +177,22 @@ async function processFile(file) {
     });
   }
 
+  // replacement
+  const replaces = [
+    [`<tree>`, `<div id="tree">`],
+    [`</tree>`, `</div>`],
+    [/<entry\s*(.*?)\s*>/gm, `<div class="entry"><span>$1</span>`],
+    [`</entry>`, `</div>`],
+    [`<sentry>`, `<div class="entry"><span>`],
+    [`</sentry>`, `</span></div>`],
+    [`<branch>`, `<div class="branch">`],
+    [`</branch>`, `</div>`],
+  ];
+  for (let i = 0; i < replaces.length; i++) {
+    processed = processed.replaceAll(replaces[i][0], replaces[i][1]);
+  }
+
+  // minify
   const dest = path.join(DEST, path.relative(SOURCE, file));
 
   if (options.minify && dest.endsWith(".html")) {
@@ -165,7 +203,9 @@ async function processFile(file) {
       removeComments: true,
       minifyCSS: true,
       minifyJS: true,
-      removeAttributeQuotes: true,
+      minifyURLs: true,
+      sortAttributes: true,
+      sortClassName: true,
     });
     console.log("Minified " + dest);
   }
@@ -201,6 +241,31 @@ function processDir(dir) {
 fs.mkdir(DEST, { recursive: true }, async (err) => {
   if (err) throw err;
   await processDir(SOURCE);
+  if (options.production) {
+    const { SitemapStream, streamToPromise } = require("sitemap");
+    const { Readable } = require("stream");
+
+    // An array with your links
+    const name = require("./package.json").subpage;
+    const links = all_index_files.map((f) => {
+      return {
+        url: path.normalize(path.join(name, f, "/")),
+        changefreq: "daily",
+        priority: f == "" ? 1 : 0.8,
+      };
+    });
+
+    // Create a stream to write to
+    const stream = new SitemapStream({
+      hostname: "https://veehz.github.io/",
+    });
+
+    streamToPromise(Readable.from(links).pipe(stream)).then((data) => {
+      // write data to sitemap.xml
+      fs.writeFileSync(path.join(DEST, "sitemap.xml"), data.toString());
+      console.log(`Wrote ${DEST}/sitemap.xml`);
+    });
+  }
   copyFavicons();
 });
 
