@@ -1,8 +1,8 @@
 {
-  "name": "orgchem_chemeq",
+  "name": "chem",
   "version": "1.0.0",
-  "description": "Organic Chemistry Equations Exercise",
-  "main": "cookies.js",
+  "description": "Chemistry Revision",
+  "main": "preprocess.js",
   "scripts": {
     "build": "rm -r docs & node preprocess.js --minify",
     "dev": "concurrently --kill-others \"cd docs && live-server --no-browser\" \"when-changed -r src node preprocess.js --development\"",
@@ -11,21 +11,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/veehz/orgchem_eq_exercise.git"
+    "url": "git+https://github.com/veehz/chem.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "chemistry",
+    "revision"
+  ],
+  "author": "veehz",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/veehz/orgchem_eq_exercise/issues"
+    "url": "https://github.com/veehz/chem/issues"
   },
-  "homepage": "https://github.com/veehz/orgchem_eq_exercise#readme",
+  "homepage": "https://github.com/veehz/chem#readme",
   "dependencies": {
-    "concurrently": "^7.4.0",
-    "gh-pages": "^4.0.0",
     "html-minifier-terser": "^7.0.0",
     "katex": "^0.16.2",
-    "live-server": "^1.2.2",
     "preprocess": "^3.2.0"
+  },
+  "devDependencies": {
+    "@compodoc/live-server": "^1.2.3",
+    "concurrently": "^7.5.0",
+    "gh-pages": "^4.0.0"
   }
 }
