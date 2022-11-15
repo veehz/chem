@@ -3,7 +3,6 @@
 
 <head>
     <!-- @include $lib/header.html -->
-    <!-- @includecss $lib/styles/table.css -->
     <!-- @prerender_katex -->
     <!-- @include $lib/katex_css.html -->
     <title>物理化学</title>
@@ -12,7 +11,33 @@
 <body>
     <main>
         <h1>物理化学 溶解度</h1>
+        <canvas id="myCanvas" style="border:1px solid #d3d3d3;">
+            Your browser does not support the HTML canvas tag.</canvas>
         <!-- @include __includes/solubility.html -->
+        *0.01g-1g 微溶，&lt;0.01g 难溶。
+
+
+        <script>
+            // draw circle with pizza slices
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+            ctx.stroke();
+            // draw horizontal diameter
+            ctx.moveTo(50, 75);
+            ctx.lineTo(150, 75);
+            ctx.stroke();
+            // draw vertical diameter
+            ctx.moveTo(100, 25);
+            ctx.lineTo(100, 125);
+            ctx.stroke();
+            // draw 45 degree diameter
+            ctx.moveTo(50, 25);
+            ctx.lineTo(150, 125);
+            ctx.stroke();
+        </script>
+
         </div>
     </main>
 </body>

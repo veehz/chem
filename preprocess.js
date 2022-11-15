@@ -135,6 +135,12 @@ async function processFile(file) {
       },
       PRODUCTION: options.production,
       DEVELOPMENT: options.development,
+      relLink: (href) => {
+        if (options.production) {
+          return "/" + require("./package.json").subpage + href;
+        }
+        return href;
+      },
       ...page_specific_context_map[path.normalize(path.relative(SOURCE, file))],
     },
     {
@@ -179,14 +185,16 @@ async function processFile(file) {
 
   // replacement
   const replaces = [
-    [`<tree>`, `<div id="tree">`],
-    [`</tree>`, `</div>`],
-    [/<entry\s*(.*?)\s*>/gm, `<div class="entry"><span>$1</span>`],
-    [`</entry>`, `</div>`],
-    [`<sentry>`, `<div class="entry"><span>`],
-    [`</sentry>`, `</span></div>`],
-    [`<branch>`, `<div class="branch">`],
-    [`</branch>`, `</div>`],
+    // [`<tree>`, `<div id="tree">`],
+    // [`</tree>`, `</div>`],
+    // [/<entry\s*(.*?)\s*>/gm, `<div class="entry"><span>$1</span>`],
+    // [`</entry>`, `</div>`],
+    // [`<sentry>`, `<div class="entry"><span>`],
+    // [`</sentry>`, `</span></div>`],
+    // [`<branch>`, `<div class="branch">`],
+    // [`</branch>`, `</div>`],
+    [/<cr\s*(.*?)\s*>/gm, `<span style="color: $1">`],
+    [`</cr>`, `</span>`],
   ];
   for (let i = 0; i < replaces.length; i++) {
     processed = processed.replaceAll(replaces[i][0], replaces[i][1]);
@@ -195,19 +203,33 @@ async function processFile(file) {
   // minify
   const dest = path.join(DEST, path.relative(SOURCE, file));
 
-  if (options.minify && dest.endsWith(".html")) {
-    const { minify } = require("html-minifier-terser");
-    processed = await minify(processed, {
-      collapseWhitespace: true,
-      preserveLineBreaks: true,
-      removeComments: true,
-      minifyCSS: true,
-      minifyJS: true,
-      minifyURLs: true,
-      sortAttributes: true,
-      sortClassName: true,
-    });
-    console.log("Minified " + dest);
+  if (options.minify) {
+    if (dest.endsWith(".html")) {
+      const { minify } = require("html-minifier-terser");
+      processed = await minify(processed, {
+        collapseWhitespace: true,
+        preserveLineBreaks: true,
+        removeComments: true,
+        minifyCSS: true,
+        minifyJS: true,
+        minifyURLs: true,
+        sortAttributes: true,
+        sortClassName: true,
+      });
+      console.log("Minified " + dest);
+    }
+
+    if (dest.endsWith(".css")) {
+      const CleanCSS = require("clean-css");
+      processed = await new CleanCSS({
+        level: {
+          2: {
+            all: true,
+          },
+        },
+      }).minify(processed).styles;
+      console.log("Minified " + dest);
+    }
   }
 
   // if exists and same output, don't write
