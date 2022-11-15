@@ -91,6 +91,21 @@ table {
   }
 }
 
+#toc {
+  border: solid 1px black;
+  padding: 2px;
+}
+#toc a {
+  text-decoration: none;
+  color: black;
+}
+#toc::before {
+    content: "目录";
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0;
+}
+
 /* back-to-top */
 #back-to-top {
   background: #ddd;

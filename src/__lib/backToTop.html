@@ -1,30 +1,35 @@
 <!-- https://gist.github.com/veehz/57880f75aeec36bcdf9dfff115371d23 -->
 
-<div id="back-to-top" class="hidden">
+<!-- <div id="back-to-top" class="hidden">
     <svg viewBox="0 0 24 24">
         <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
     </svg>
-</div>
+</div> -->
 
 <script type="text/javascript">
-    var backToTop = document.getElementById("back-to-top");
-    var scrollTrigger = 100;
-    window.addEventListener("scroll", function () {
-        if (window.pageYOffset > scrollTrigger) {
-            backToTop.classList.remove("hidden");
-        } else {
-            backToTop.classList.add("hidden");
-        }
-    });
-    backToTop.addEventListener("click", function () {
-        // fast scroll to top if browser supports, else instant
-        if ("scrollBehavior" in document.documentElement.style) {
-            document.documentElement.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
-        } else {
-            document.documentElement.scrollTop = 0;
-        }
+    window.addEventListener("DOMContentLoaded", () => {
+        var backToTop = document.createElement('div');
+        backToTop.id = 'back-to-top';
+        backToTop.innerHTML = '<svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>';
+        document.body.appendChild(backToTop);
+        var scrollTrigger = 100;
+        window.addEventListener("scroll", function () {
+            if (window.pageYOffset > scrollTrigger) {
+                backToTop.classList.remove("hidden");
+            } else {
+                backToTop.classList.add("hidden");
+            }
+        });
+        backToTop.addEventListener("click", function () {
+            // fast scroll to top if browser supports, else instant
+            if ("scrollBehavior" in document.documentElement.style) {
+                document.documentElement.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            } else {
+                document.documentElement.scrollTop = 0;
+            }
+        });
     });
 </script>
