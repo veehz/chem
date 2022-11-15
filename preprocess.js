@@ -15,7 +15,7 @@ const SOURCE = "src";
 const DEST = "docs";
 
 let exclude = [];
-const page_specific_context = [["index.html", { noBackButton: true }]];
+const page_specific_context = [];
 
 const page_specific_context_map = {};
 for (const [file, context] of page_specific_context) {
@@ -145,6 +145,7 @@ async function processFile(file) {
     },
     {
       srcDir,
+      type: path.extname(file).substring(1),
     }
   );
   if (processed.includes("<!-- @prerender_katex -->")) {

@@ -5,42 +5,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="<!-- @exec relLink("/main.css") -->" />
-
 <!-- @if PRODUCTION -->
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESQYE2ECNB"></script>
-<script>
-    if (!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-ESQYE2ECNB', { 'site_speed_sample_rate': 100 });
-    }
-</script>
-
 <!-- Quicklink -->
 <script defer src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js"></script>
 <script defer src="data:text/javascript,quicklink.listen()"></script>
-<!-- @endif -->
 
-<!-- @ifndef noBackButton -->
-<script>
-    window.addEventListener("DOMContentLoaded", function () {
-        const backButton = document.createElement("a");
-        backButton.innerHTML = `<!-- @include ./svg/arrow_back.svg -->`;
-        backButton.id = "backbutton";
-        backButton.href = "../";
-        document.body.appendChild(backButton);
-    });
-</script>
-<!-- @endif -->
-
-<!-- @ifndef noBackToTop -->
-<!-- @include backToTop.html -->
-<!-- @endif -->
-
-<!-- @if PRODUCTION -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -48,3 +19,6 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 <!-- @endif -->
+
+<link rel="stylesheet" href="<!-- @exec relLink("/main.css") -->" />
+<script src="<!-- @exec relLink("/main.js") -->"></script>
