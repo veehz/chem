@@ -4,9 +4,9 @@
   "description": "Chemistry Revision",
   "main": "preprocess.js",
   "scripts": {
-    "build": "rm -r docs & node preprocess.js --minify",
+    "build": "rm -r docs & node preprocess.js --minify --prefetch",
     "dev": "concurrently --kill-others \"cd docs && live-server --no-browser\" \"when-changed -r src node preprocess.js --development\"",
-    "preview": "cd docs && live-server",
+    "preview": "cd docs && live-server --no-browser",
     "deploy": "npm run build && node gh-pages.js"
   },
   "repository": {
@@ -25,6 +25,7 @@
   "subpage": "chem",
   "homepage": "https://veehz.github.io/chem/",
   "dependencies": {
+    "clean-css": "^5.3.1",
     "html-minifier-terser": "^7.0.0",
     "katex": "^0.16.2",
     "preprocess": "^3.2.0",
