@@ -5,7 +5,7 @@
   "main": "preprocess.js",
   "scripts": {
     "build": "rm -r docs & node preprocess.js --minify --prefetch",
-    "dev": "concurrently --kill-others \"cd docs && live-server --no-browser\" \"when-changed -r src node preprocess.js --development\"",
+    "dev": "rm -r docs && node preprocess.js --development && concurrently --kill-others \"cd docs && live-server --no-browser\" \"when-changed -r src node preprocess.js --development\"",
     "preview": "cd docs && live-server --no-browser",
     "deploy": "npm run build && node gh-pages.js"
   },

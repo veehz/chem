@@ -10,6 +10,9 @@ const options = {
 };
 
 options.production = !options.development;
+if(options.development){
+  options.prefetch = false;
+}
 
 const SOURCE = "src";
 const DEST = "docs";
