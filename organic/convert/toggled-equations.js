@@ -1,1 +1,70 @@
-"use strict";let current_equations=equations;function isRandom(){return"Random"==document.getElementById("ordering").innerText}getCookie("ordering")&&(document.getElementById("ordering").innerText=getCookie("ordering")),document.getElementById("ordering").addEventListener("click",(()=>{const e=document.getElementById("ordering");"Ordered"==e.innerText?e.innerText="Random":e.innerText="Ordered",setCookie("ordering",e.innerText)})),getCookie("inclusion")&&(document.getElementById("inclusion").innerText=getCookie("inclusion")),document.getElementById("inclusion").addEventListener("click",(()=>{const e=document.getElementById("inclusion");"And"==e.innerText?e.innerText="Or":e.innerText="And",setCookie("inclusion",e.innerText)}));const familyTypes=[];for(const e of equations)familyTypes.includes(e.from)||familyTypes.push(e.from),familyTypes.includes(e.to)||familyTypes.push(e.to);function refreshCurrentEquations(){current_equations=[];const e=document.getElementById("inclusion").innerText;for(const n of equations)("And"==e&&document.getElementById(`toggle-${n.from}`).checked&&document.getElementById(`toggle-${n.to}`).checked||"Or"==e&&(document.getElementById(`toggle-${n.from}`).checked||document.getElementById(`toggle-${n.to}`).checked))&&current_equations.push(n);changeEquation()}for(const e of familyTypes)document.getElementById("family-fieldset").innerHTML+=`\n    <div>\n        <input type="checkbox" id="toggle-${e}" name="toggle-${e}" value="${e}" checked>\n        <label for="toggle-${e}">${e}</label>\n    </div>\n    `;for(const e of familyTypes)"false"===getCookie(`toggle-${e}`)&&(document.getElementById(`toggle-${e}`).checked=!1),document.getElementById(`toggle-${e}`).addEventListener("change",(n=>{setCookie(`toggle-${e}`,n.target.checked?"true":"false")}));
+"use strict";
+
+let current_equations = equations;
+
+if (getCookie("ordering")) {
+  document.getElementById("ordering").innerText = getCookie("ordering");
+}
+document.getElementById("ordering").addEventListener("click", () => {
+  const btn = document.getElementById("ordering");
+  if (btn.innerText == "Ordered") btn.innerText = "Random";
+  else btn.innerText = "Ordered";
+  setCookie("ordering", btn.innerText);
+});
+
+if (getCookie("inclusion")) {
+  document.getElementById("inclusion").innerText = getCookie("inclusion");
+}
+document.getElementById("inclusion").addEventListener("click", () => {
+  const btn = document.getElementById("inclusion");
+  if (btn.innerText == "And") btn.innerText = "Or";
+  else btn.innerText = "And";
+  setCookie("inclusion", btn.innerText);
+});
+
+function isRandom() {
+  return document.getElementById("ordering").innerText == "Random";
+}
+
+const familyTypes = [];
+for (const eq of equations) {
+  if (!familyTypes.includes(eq.from)) familyTypes.push(eq.from);
+  if (!familyTypes.includes(eq.to)) familyTypes.push(eq.to);
+}
+
+function refreshCurrentEquations() {
+  current_equations = [];
+  const inclusion = document.getElementById("inclusion").innerText;
+  for (const eq of equations) {
+    if (
+      (inclusion == "And" &&
+        document.getElementById(`toggle-${eq.from}`).checked &&
+        document.getElementById(`toggle-${eq.to}`).checked) ||
+      (inclusion == "Or" &&
+        (document.getElementById(`toggle-${eq.from}`).checked ||
+          document.getElementById(`toggle-${eq.to}`).checked))
+    )
+      current_equations.push(eq);
+  }
+  changeEquation();
+}
+
+for (const type of familyTypes) {
+  document.getElementById("family-fieldset").innerHTML += `
+    <div>
+        <input type="checkbox" id="toggle-${type}" name="toggle-${type}" value="${type}" checked>
+        <label for="toggle-${type}">${type}</label>
+    </div>
+    `;
+}
+
+for (const type of familyTypes) {
+  if (getCookie(`toggle-${type}`) === "false") {
+    document.getElementById(`toggle-${type}`).checked = false;
+  }
+  document
+    .getElementById(`toggle-${type}`)
+    .addEventListener("change", (event) => {
+      setCookie(`toggle-${type}`, event.target.checked ? "true" : "false");
+    });
+}
